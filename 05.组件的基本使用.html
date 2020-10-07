@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <zk-botton></zk-botton>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <!-- 组件的使用 -->
+    <!-- 1.定义组件 -->
+    <!-- Vue.component(组件名，组件的配置对象) 严格遵守w3c的命名规范，全部小写
+     -->
+    <!-- 2.使用组件 -->
+
+    <!-- 当成html标签直接使用 -->
+
+    <!-- 组件定义的注意点 -->
+    <!-- 1.组件有且只能有一个根元素 -->
+    <!-- 2.定义的组件不能用内置的html标签名 -->
+
+    <!-- 组件是一个可复用的vue实例
+        vue的配置项，其他的和根实例相同，但是el是根实例独有的
+     -->
+
+    <script>
+      Vue.component("zk-botton", {
+        template: `<div>
+                <a href="#">嘿嘿</a>
+                    <button>我是按钮</button>
+                </div>
+                `,
+      });
+      const vm = new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>

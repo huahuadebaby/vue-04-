@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <demo> </demo>
+        <demo> </demo>
+        <demo> </demo>
+        <div>我是demo组件 ---{{count}}</div>
+        <div>我是demo组件 ---{{count}}</div>
+        <div>我是demo组件 ---{{count}}</div>
+        <button @click='fn'>按钮 </button>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('demo', {
+            template: `<div>
+            <div>我是demo组件  ---{{count}}</div>
+            <button @click='fn'>按钮 </button> </div>`,
+            // 组件的其他配置项和根实例相同，但不同的是他的data数据项与根
+            // 实例的data是一个对象所不同组件的data是一个函数，并return返回一个对象，这样可以保证
+            // 组件的中数据都是独立的
+            data() {
+                return {
+                    count: 1
+                }
+            },
+            methods: {
+                fn() {
+                    this.count++
+                }
+
+            }
+
+
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                count: 1
+            },
+            methods: {
+                fn() {
+                    this.count++
+                }
+
+            }
+        })
+
+        // 根实例和组件的区别
+        // el是根实例的专属，
+        // 组件的data是一个函数，并用return返回一个对象，而根实例的data是一个对象
+    </script>
+</body>
+
+</html>

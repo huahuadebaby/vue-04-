@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <son :money='age' :desc='abc'></son>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('son', {
+            template: `<div>
+            <h3>我是子组件</h3>
+            <div> 传过来的数据：{{money}}---{{desc}}</div>
+            <p>自己的数据·{{msg}}</p>
+        <button @click='fn'> 加</button>
+            </div>`,
+            data() {
+                return {
+                    msg: 1
+                }
+
+            },
+            methods: {
+                fn() {
+                    this.msg++
+                }
+
+            },
+            props: ['money', 'desc']
+
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                age: 1000,
+                abc: '你好vue'
+            }
+
+        })
+
+
+        // 组件的数据来源
+        // 1.data是自己创建的，随便修改
+        // 2.props是父组件传过来的数据，遵循开发规范，不要随便修改：单项数据流
+        // 单项数据流：父组件的变化了，自动向下流动，进行更新子组件，如果子组件随意修改父组件传过来props的数据，可能会直接影响到其他子组件的运行
+    </script>
+
+</body>
+
+</html>

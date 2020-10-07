@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <button @click=fn>改值</button>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 1,
+                str: '',
+                obj: {
+                    name: 'zk',
+                    age: 18
+                }
+            },
+            methods: {
+                fn() {
+                    this.msg++
+                }
+
+
+            },
+
+            //watch 为侦听器,用于监视数据的变化，数据变化了，就会自动执行你配置的
+            // 函数
+            watch: {
+                // 监视msg的变化,修改成功，执行对应的watch中这个函数
+                msg(newValue) {
+                    console.log('他修改了', newValue);
+                },
+                // 监视str的变化，修改成功
+                str(newValue) {
+                    console.log('它已经修改', newValue);
+                },
+                // 监视对象中的属性，用字符串格式
+                'obj.age'(newValue) {
+                    console.log('它修改了，', newValue);
+                }
+
+
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>
